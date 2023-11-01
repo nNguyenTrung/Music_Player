@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Shantell Sans', cursive;
+}
+
+/* layout */
+.main-section {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 0.3fr 3fr 0.1fr;
+  grid-template-areas:
+    'nav nav'
+    'side main '
+    'footer footer';
+  grid-gap: 10px;
+}
+
+/* NAVBAR */
+nav {
+  background-color: #0000004d;
+  margin: 10px;
+  border-radius: 10px;
+  grid-area: nav;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.logo {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.navbar {
+  display: flex;
+  list-style: none;
+  width: 70%;
+  margin-right: 15px;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.navbar__item {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.navbar__item .change {
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-weight: bold;
+  color: #fff;
+  font-size: 20px;
+}
+
+.navbar__item #fullscreen-btn,
+#mute {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+}
+
+/* checkbox */
+/* Hide the default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: relative;
+  height: 16px;
+  width: 16px;
+  background: #ffffff8c;
+  border-radius: 7px;
+  padding: 10px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.30), 0px 1px 1px rgba(0, 5);
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+  background-image: #ffffff8c;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 7px;
+  top: 1px;
+  width: 5px;
+  height: 11px;
+  border: solid rgb(255, 255, 255);
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
+
+/* end checkbox */
+.note {
+  z-index: 999;
+  font-size: 10px;
+  width: 55px;
+  height: 15px;
+  position: absolute;
+  display: none;
+  background-color: #00000071;
+  top: 100%;
+  left: 0;
+  padding: 3px;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+}
+
+.content:hover .note {
+  display: block;
+}
+
+/* MAIN SECTION */
+
+main {
+  background-color: #0000003d;
+  border-radius: 10px;
+  margin: 10px;
+  grid-area: main;
+}
+
+.banner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.banner__up {
+  display: flex;
+  align-items: center;
+}
+
+.banner__up #content {
+  color: #fff;
+  font-size: 25px;
+}
+
+/* SIDEBAR */
+aside {
+  background-color: #0000004d;
+  margin-left: 10px;
+  border-radius: 10px;
+  color: #fff;
+  grid-area: side;
+  margin: 10px;
+}
+
+.sidebar__title {
+  padding: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sidebar {
+  list-style: none;
+  padding: 15px;
+}
+
+.sidebar__item {
+  padding: 10px;
+  margin-top: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.music_controls .controls {
+  display: block;
+  padding: 1px 120px;
+}
+
+.controls #playpause {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #ffffffe3;
+  font-size: 50px;
+  padding-top: 20px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 160px;
+  height: 8px;
+  background-color: #1b1b1b62;
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+li {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: transform .2s;
+  overflow: value;
+  list-style-type: none;
+}
+
+li:hover {
+  transform: scale(1.1);
+}
+
+/* footercss */
+footer {
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  grid-area: footer;
+}
+
+/* end footer */
+
+/* responsive */
+@media only screen and (max-width: 550px) {
+  .main-section {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.4fr 0.4fr 2.2fr 1fr;
+    grid-template-areas: 'nav' 'side' 'main' 'footer'
+  }
+
+  .music_controls .controls {
+    display: block;
+    padding: 1px 200px;
+  }
+
+  .controls #playpause {
+    border: none;
+    background: none;
+    width: 50px;
+    cursor: pointer;
+    color: #ffffffe3;
+    font-size: 50px;
+    padding-top: 20px;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 330px;
+    height: 8px;
+    background-color: #1b1b1b62;
+    border-radius: 4px;
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  input[type="range"]:focus::-webkit-slider-thumb {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+  }
+}

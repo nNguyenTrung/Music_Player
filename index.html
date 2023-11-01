@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font gg -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@300&display=swap" rel="stylesheet">
+    <!-- font icon -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
+        integrity="sha512-YFENbnqHbCRmJt5d+9lHimyEMt8LKSNTMLSaHjvsclnZGICeY/0KYEeiHwD1Ux4Tcao0h60tdcMv+0GljvWyHg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- css main  -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- favation -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon_io/favicon.ico">
+    <title>StudyWithMe</title>
+</head>
+
+<body
+    style="background-image: url('assets/img/gif4.gif');background-position: center; background-repeat: repeat;background-size: cover;">
+
+    <section class="main-section">
+        <!-- nav -->
+        <nav>
+            <div class="logo"><strong>Study With Me</strong> </div>
+            <ul class="navbar">
+                <li class="navbar__item">
+                    <button class="change" onclick="changeBackground()">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </button>
+                </li>
+                <li class="navbar__item">
+                    <div id="clock-widget">
+                        <div id="clock">00:00</div>
+                    </div>
+                </li>
+                <li class="navbar__item">
+                    <button id="fullscreen-btn">
+                        <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                    </button>
+                </li>
+                <li class="navbar__item">
+                    <button id="mute">
+                        <i class="bi bi-volume-mute-fill"></i>
+                    </button>
+                </li>
+                <li class="navbar__item">
+                    <div class="content">
+                        <label class="container" for="sound-checkbox">
+                            <input type="checkbox" id="sound-checkbox" type="checkbox">
+                            <div class="checkmark"></div>
+                        </label> <span class="note">Rain City</span>
+                        <audio id="my-audio" loop>
+                            <source src="assets/songs/rain.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </li>
+            </ul>
+        </nav><!-- end nav -->
+
+        <!-- main -->
+        <main>
+            <div class="banner">
+                <div class="banner__up">
+                    <h1 class="banner__title">
+                        <div id="content"></div><br>
+                    </h1>
+                </div>
+            </div>
+        </main><!-- end main -->
+
+        <!-- list -->
+        <aside class="sidebar">
+            <!-- title -->
+            <h3 class="sidebar__title">
+                Playlist Lofi
+            </h3>
+            <!-- list -->
+            <div id="playlist">
+                <ul id="songs">
+                    <!-- songs display -->
+                </ul>
+            </div>
+            <hr><br>
+            <!-- seekbar and controls -->
+            <div class="music_controls">
+                <div class="seek_bar">
+                    <input type="range" id="seek-bar" min="0" max="100" value="0">
+                    <span id="time-display" style="font-size: 15px;">0:00 / 0:00</span><br>
+                </div>
+                <div class="controls">
+                    <button id="playpause">
+                        <i class="fa-solid fa-pause"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+        </div>
+        <!-- footer -->
+        <footer class="footer">
+            <p>@ngdtai2k2</p>
+        </footer>
+        <!-- end footer -->
+    </section>
+    <!-- script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"
+        integrity="sha512-2bMhOkE/ACz21dJT8zBOMgMecNxx0d37NND803ExktKiKdSzdwn+L7i9fdccw/3V06gM/DBWKbYmQvKMdAA9Nw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // change bg
+        var backgrounds = [
+            'assets/img/gif1.gif',
+            'assets/img/gif2.gif',
+            'assets/img/gif3.gif',
+            'assets/img/gif4.gif',
+            'assets/img/gif5.gif',
+            'assets/img/gif6.gif',
+            'assets/img/gif7.gif',
+        ];
+        var currentBackgroundIndex = 0;
+
+        function changeBackground() {
+            var body = document.querySelector("body");
+            body.style.backgroundImage = "url('" + backgrounds[currentBackgroundIndex] + "')";
+            currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+        };
+
+        // Fullscreen
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+        fullscreenBtn.addEventListener('click', () => {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+                // change icon
+                fullscreenBtn.innerHTML = '<i class="fa-solid fa-up-right-and-down-left-from-center"></i>';
+            } else {
+                document.documentElement.requestFullscreen();
+                fullscreenBtn.innerHTML = '<i class="fa-solid fa-down-left-and-up-right-to-center"></i>';
+            }
+        });
+
+    </script>
+    <script src="assets/js/clock.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+
+</html>
